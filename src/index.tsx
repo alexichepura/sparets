@@ -1,8 +1,8 @@
-declare var module: any
+/// <reference types="webpack-env" />
 
 import * as React from 'react'
 import { render } from 'react-dom'
-const { AppContainer } = require('react-hot-loader')
+import { AppContainer } from 'react-hot-loader'
 
 import App from './App'
 
@@ -17,10 +17,9 @@ render(
 
 if (module.hot) {
   module.hot.accept('./App', () => {
-    const NextApp = require('./App').default
     render(
       <AppContainer>
-        <NextApp />
+        <App />
       </AppContainer>,
       appNode
     )

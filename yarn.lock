@@ -2,7 +2,24 @@
 # yarn lockfile v1
 
 
-"@types/node@^0.0.2":
+"@types/express-serve-static-core@*":
+  version "4.0.39"
+  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.0.39.tgz#45157f96480d46f254648f45b2c6d70bd9fc9f54"
+  dependencies:
+    "@types/node" "*"
+
+"@types/express@^4.0.34":
+  version "4.0.34"
+  resolved "https://registry.yarnpkg.com/@types/express/-/express-4.0.34.tgz#cdc0afd69d70d2295b81b3aa47f26f672afcde1c"
+  dependencies:
+    "@types/express-serve-static-core" "*"
+    "@types/serve-static" "*"
+
+"@types/mime@*":
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/@types/mime/-/mime-0.0.29.tgz#fbcfd330573b912ef59eeee14602bface630754b"
+
+"@types/node@*", "@types/node@^0.0.2":
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-0.0.2.tgz#0da4934902fbf68a97a0f53204a35ad2224917bc"
 
@@ -15,6 +32,33 @@
 "@types/react@*", "@types/react@^0.14.52":
   version "0.14.52"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-0.14.52.tgz#3bdfe5c9fe7aca2c6600ee1b0363f4b7acc69c93"
+
+"@types/serve-static@*":
+  version "1.7.31"
+  resolved "https://registry.yarnpkg.com/@types/serve-static/-/serve-static-1.7.31.tgz#15456de8d98d6b4cff31be6c6af7492ae63f521a"
+  dependencies:
+    "@types/express-serve-static-core" "*"
+    "@types/mime" "*"
+
+"@types/source-map@*":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@types/source-map/-/source-map-0.5.0.tgz#dd34bbd8e32fe4e74f2e3d8ac07f8aa5b45a47ac"
+
+"@types/uglify-js@*":
+  version "2.6.28"
+  resolved "https://registry.yarnpkg.com/@types/uglify-js/-/uglify-js-2.6.28.tgz#1499b48ca3a44132250b318cdde25b8f45f0c616"
+  dependencies:
+    "@types/source-map" "*"
+
+"@types/webpack-env@^1.12.1":
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.12.1.tgz#3cc5373201a70e8381026a09eabf0f4a3301b3c4"
+
+"@types/webpack@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-2.0.0.tgz#e7934a1c0bb628e1940f090c0afd2682817c1def"
+  dependencies:
+    "@types/uglify-js" "*"
 
 abbrev@1:
   version "1.0.9"

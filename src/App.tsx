@@ -1,20 +1,5 @@
 import * as React from 'react'
-
-class Deep2 extends React.Component<any, any> {
-  render() {
-    return <span>
-      !Change me. Notice, counter doesn't reset.
-    </span>
-  }
-}
-
-class Deep1 extends React.Component<any, any> {
-  render() {
-    return <span className='leo-need-deeper'>
-      <Deep2 />
-    </span>
-  }
-}
+import Header from './part/Header'
 
 class App extends React.Component<any, any> {
   constructor(props: any) {
@@ -22,12 +7,15 @@ class App extends React.Component<any, any> {
     this.state = {
       count: 0
     }
+  }
+  componentDidMount() {
     setInterval(() => this.setState({ count: this.state.count + 1 }), 1000)
   }
+
   render() {
     return <div>
       <div className='deep'>
-        <Deep1 />
+        <Header />
         <h2>{this.state.count}</h2>
       </div>
     </div>

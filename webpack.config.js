@@ -1,6 +1,5 @@
 const path = require('path')
-const webpack = require('webpack')
-// const Extract = require('extract-text-webpack-plugin')
+const webpack =   require('webpack')
 
 const NODE_ENV = process.env.NODE_ENV
 const IS_PROD = NODE_ENV === 'production'
@@ -54,31 +53,7 @@ const config = {
       }
     }),
     new webpack.HotModuleReplacementPlugin(),
-  ],
-  // devServer: {
-  //   // port: METADATA.PORT,
-  //   // host: METADATA.HOST,
-  //   historyApiFallback: true,
-  //   contentBase: 'dist',
-  //   // noInfo: true,
-  //   stats: {
-  //     chunks: false,
-  //     assets: false,
-  //     // timings: true,
-  //     colors: true,
-  //     // hash: false,
-  //     // version: false,
-  //     // chunks: false,
-  //     // modules: false,
-  //     // reasons: false,
-  //     // children: false,
-  //     // source: false,
-  //     // errors: false,
-  //     // errorDetails: false,
-  //     // warnings: false,
-  //     // publicPath: false
-  //   }
-  // }
+  ]
 }
 
 module.exports = config
