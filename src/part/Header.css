@@ -1,0 +1,35 @@
+@import '../style/var.css';
+
+.header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(34,36,38,.15);
+  box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
+
+  font-weight: bold;
+}
+
+.space {
+  flex: 1 1 100%;
+}
+
+.item {
+  line-height: var(--size-el);
+  height: var(--size-el);
+  padding: 0 10px;
+  white-space: nowrap;
+}
+
+.email {
+  opacity: 0.3;
+}
+
+.blue {
+  color: --color-blue;
+}

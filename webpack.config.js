@@ -6,7 +6,7 @@ const IS_PROD = NODE_ENV === 'production'
 const PATH_DIST = path.resolve(__dirname, 'public', 'dist')
 
 const config = {
-  devtool: IS_PROD ? 'source-map' : 'eval',
+  devtool: IS_PROD ? 'source-map' : 'cheap-eval-source-map',
   resolve: {
     extensions: ['.ts', '.tsx', '.js']
   },
@@ -36,10 +36,10 @@ const config = {
     }, {
       test: /\.css$/,
       loaders: IS_PROD
-        ? Extract.extract(['css?-url&sourceMap&modules&importLoaders=1&' +
-          'localIdentName=[hash:base64:5]', 'postcss?sourceMap'])
-        : ['style?sourceMap', 'css?-url&modules&importLoaders=1&' +
-          'localIdentName=[path]_[name]_[local]', 'postcss']
+        ? Extract.extract(['css-loader?-url&sourceMap&modules&importLoaders=1&' +
+          'localIdentName=[hash:base64:5]'])
+        : ['style-loader?sourceMap', 'css-loader?-url&modules&importLoaders=1&' +
+          'localIdentName=[path]_[name]_[local]']
     }]
   },
   plugins: [
