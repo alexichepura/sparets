@@ -3,18 +3,18 @@ Single Page Application React Typescript
 
 ## Features
 - typescript
+- tslint, tslint-config-standard, editorconfig
 - yarn, webpack 2, build with dll
 - react
+- react-router
 - hot module reload
 - express
-- tslint, tslint-config-standard, editorconfig
 - CSS modules
 - TODO
     - postcss, cssnext
     - jest
     - production config
     - redux
-    - router
     - graphql?
 
 ## Install
