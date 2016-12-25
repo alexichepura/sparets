@@ -1,11 +1,12 @@
 import * as React from 'react'
+import Router from 'react-router/BrowserRouter'
+import Match from 'react-router/Match'
+import Link from 'react-router/Link'
 import Header from './part/Header'
 import Home from './page/Home'
 import Login from './page/Login'
 import Counter from './page/Counter'
-import Router from 'react-router/BrowserRouter'
-import Match from 'react-router/Match'
-import Link from 'react-router/Link'
+import ReduxPeople from './redux/RootComponent'
 
 export default class App extends React.Component<any, any> {
   constructor(props: any) {
@@ -20,6 +21,7 @@ export default class App extends React.Component<any, any> {
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/login'>Login</Link></li>
           <li><Link to='/counter'>Counter</Link></li>
+          <li><Link to='/redux/people'>Redux People</Link></li>
         </ul>
         <hr/>
 
@@ -27,6 +29,7 @@ export default class App extends React.Component<any, any> {
           <Match exactly pattern='/' component={Home} />
           <Match pattern='/login' component={Login} />
           <Match pattern='/counter' component={Counter} />
+          <Match pattern='/redux/people' component={ReduxPeople} />
         </main>
       </div>
     </Router>

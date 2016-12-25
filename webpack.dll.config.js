@@ -8,7 +8,8 @@ const config = {
   devtool: IS_PROD ? 'source-map' : 'eval',
   entry: {
     dll: [
-      'react', 'react-dom'
+      'react', 'react-dom', 'react-router',
+      'redux', 'react-redux', 'redux-thunk'
     ]
   },
   output: {
@@ -33,6 +34,13 @@ const config = {
       name: '[name]_lib'
     }),
   ]
+}
+
+if (!IS_PROD) {
+  config.entry.dll.unshift(
+    // 'react-hot-loader/patch'
+    // 'webpack-hot-middleware/client'
+  )
 }
 
 module.exports = config
