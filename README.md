@@ -10,11 +10,11 @@ Single Page Application React Typescript
 - hot module reload
 - express
 - CSS modules
+- redux (page with simple example)
 - TODO
     - postcss, cssnext
     - jest
     - production config
-    - redux
     - graphql?
 
 ## Install
