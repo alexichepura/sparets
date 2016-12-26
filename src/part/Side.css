@@ -1,0 +1,7 @@
+.side {
+  flex: 0 0 300px;
+}
+
+.active {
+  color: red;
+}

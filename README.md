@@ -12,9 +12,9 @@ Single Page Application React Typescript
 - CSS modules
 - redux (page with simple example)
 - mobx (page with simple example)
+- jest
 - TODO
     - postcss, cssnext
-    - jest
     - production config
     - graphql?
 
@@ -22,5 +22,8 @@ Single Page Application React Typescript
 `yarn install`
 
 ## Run development  
-`npm run build:dll`  
-`npm start`
+`yarn build:dll`  
+`yarn start`
+
+## Tests
+`yarn test`
