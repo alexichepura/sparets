@@ -7,6 +7,7 @@ import Home from './page/Home'
 import Login from './page/Login'
 import Counter from './page/Counter'
 import ReduxPeople from './redux/RootComponent'
+import MobxPeople from './mobx/People'
 
 export default class App extends React.Component<any, any> {
   constructor(props: any) {
@@ -22,6 +23,7 @@ export default class App extends React.Component<any, any> {
           <li><Link to='/login'>Login</Link></li>
           <li><Link to='/counter'>Counter</Link></li>
           <li><Link to='/redux/people'>Redux People</Link></li>
+          <li><Link to='/mobx/people'>Mobx People</Link></li>
         </ul>
         <hr/>
 
@@ -30,6 +32,7 @@ export default class App extends React.Component<any, any> {
           <Match pattern='/login' component={Login} />
           <Match pattern='/counter' component={Counter} />
           <Match pattern='/redux/people' component={ReduxPeople} />
+          <Match pattern='/mobx/people' component={MobxPeople} />
         </main>
       </div>
     </Router>

@@ -8,6 +8,8 @@
     "noImplicitAny": false,
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "types": [
 
     ]
