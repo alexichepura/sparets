@@ -31,5 +31,5 @@
 }
 
 .blue {
-  color: --color-blue;
+  color: var(--color-blue);
 }

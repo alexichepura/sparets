@@ -13,8 +13,8 @@ Single Page Application React Typescript
 - redux (page with simple example)
 - mobx (page with simple example)
 - jest
+- postcss, cssnext
 - TODO
-    - postcss, cssnext
     - production config
     - graphql?
 

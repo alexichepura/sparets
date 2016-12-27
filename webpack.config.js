@@ -6,6 +6,9 @@ const IS_PROD = NODE_ENV === 'production'
 const PATH_DIST = path.resolve(__dirname, 'public', 'dist')
 
 const config = {
+  performance: {
+    hints: IS_PROD
+  },
   devtool: IS_PROD ? 'source-map' : 'cheap-eval-source-map',
   resolve: {
     extensions: ['.ts', '.tsx', '.js']
@@ -36,10 +39,15 @@ const config = {
     }, {
       test: /\.css$/,
       loaders: IS_PROD
-        ? Extract.extract(['css-loader?-url&sourceMap&modules&importLoaders=1&' +
-          'localIdentName=[hash:base64:5]'])
-        : ['style-loader?sourceMap', 'css-loader?-url&modules&importLoaders=1&' +
-          'localIdentName=[path]_[name]_[local]']
+        ? Extract.extract([
+          'css-loader?-url&sourceMap&modules&importLoaders=1&localIdentName=[hash:base64:5]',
+          'postcss-loader'
+        ])
+        : [
+          'style-loader?sourceMap',
+          'css-loader?-url&modules&importLoaders=1&localIdentName=[path]_[name]_[local]',
+          'postcss-loader'
+        ]
     }]
   },
   plugins: [
@@ -53,6 +61,17 @@ const config = {
       }
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        context: __dirname,
+        postcss: [
+          require('postcss-import')(),
+          require('postcss-cssnext')({
+            browsers: [`last ${IS_PROD ? 2 : 1} versions`]
+          })
+        ]
+      }
+    })
   ]
 }
 
