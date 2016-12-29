@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack =   require('webpack')
+const Extract = require('extract-text-webpack-plugin')
 
 const NODE_ENV = process.env.NODE_ENV
 const IS_PROD = NODE_ENV === 'production'
@@ -7,17 +8,13 @@ const PATH_DIST = path.resolve(__dirname, 'public', 'dist')
 
 const config = {
   performance: {
-    hints: IS_PROD
+    hints: IS_PROD ? 'warning' : false
   },
   devtool: IS_PROD ? 'source-map' : 'cheap-eval-source-map',
   resolve: {
     extensions: ['.ts', '.tsx', '.js']
   },
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-hot-middleware/client',
-    './src/index.tsx'
-  ],
+  entry: ['./src/index.tsx'],
   output: {
     filename: '[name].js',
     path: PATH_DIST,
@@ -27,15 +24,20 @@ const config = {
     rules: [{
       enforce: 'pre',
       test: /\.js$/,
-      loader: "source-map-loader"
+      loader: 'source-map-loader'
     }, {
       test: /\.tsx?$/,
       loaders: [
-        "react-hot-loader/webpack",
-        "awesome-typescript-loader"
+        'react-hot-loader/webpack',
+        {
+          loader: 'awesome-typescript-loader',
+          options: {
+            target: IS_PROD ? 'es5' : 'es6'
+          }
+        }
       ],
       exclude: path.resolve(__dirname, 'node_modules'),
-      include: path.resolve(__dirname, "src"),
+      include: path.resolve(__dirname, 'src'),
     }, {
       test: /\.css$/,
       loaders: IS_PROD
@@ -73,6 +75,33 @@ const config = {
       }
     })
   ]
+}
+
+if (IS_PROD) {
+  config.plugins.push(
+    new Extract({
+      filename: '[name].css',
+      allChunks: true
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      },
+      output: {
+        comments: false
+      },
+      sourceMap: true
+    })
+  )
+} else {
+  config.entry.unshift(
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client'
+  )
 }
 
 module.exports = config

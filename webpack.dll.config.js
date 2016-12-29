@@ -5,6 +5,9 @@ const IS_PROD = NODE_ENV === 'production'
 const PATH_DIST = path.resolve(__dirname, 'public', 'dist')
 
 const config = {
+  performance: {
+    hints: IS_PROD ? 'warning' : false
+  },
   devtool: IS_PROD ? 'source-map' : 'eval',
   entry: {
     dll: [
@@ -16,12 +19,6 @@ const config = {
     filename: '[name].js',
     path: PATH_DIST,
     library: '[name]_lib',
-  },
-  module: {
-    // rules: [{
-    //   test: require.resolve('react'),
-    //   loader: 'expose?React'
-    // }]
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -36,11 +33,29 @@ const config = {
   ]
 }
 
-if (!IS_PROD) {
-  config.entry.dll.unshift(
-    // 'react-hot-loader/patch'
-    // 'webpack-hot-middleware/client'
+if (IS_PROD) {
+  config.plugins.push(
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      },
+      output: {
+        comments: false
+      },
+      sourceMap: true
+    })
   )
 }
+
+// if (!IS_PROD) {
+//   config.entry.dll.unshift(
+//     // 'react-hot-loader/patch'
+//     // 'webpack-hot-middleware/client'
+//   )
+// }
 
 module.exports = config

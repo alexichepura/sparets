@@ -12,10 +12,10 @@ Single Page Application React Typescript
 - CSS modules
 - redux (page with simple example)
 - mobx (page with simple example)
-- jest
+- jest (TODO snapshots)
 - postcss, cssnext
+- production config (TODO sourcemap for main entry point in production)
 - TODO
-    - production config
     - graphql?
 
 ## Install
@@ -24,6 +24,11 @@ Single Page Application React Typescript
 ## Run development  
 `yarn build:dll`  
 `yarn start`
+
+## Run production  
+`yarn build:dll:prod`  
+`yarn build:app:prod`  
+`yarn start:prod`
 
 ## Tests
 `yarn test`
