@@ -1,10 +1,11 @@
 const express = require('express')
 const path = require('path')
 const webpack = require('webpack')
+const IS_PROD = process.env.NODE_ENV === 'production'
 
 const app = express()
 
-if ('production' !== process.env.NODE_ENV) {
+if (!IS_PROD) {
   const webPackConfig = require('./webpack.config')
   const compiler = webpack(webPackConfig)
   const devMiddleware = require('webpack-dev-middleware')
@@ -16,9 +17,29 @@ if ('production' !== process.env.NODE_ENV) {
   app.use(hotMiddleware(compiler))
 }
 
+const getHTML = props => (
+  `<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8" />
+      <title>SPARETS</title>
+      ${IS_PROD
+        ? '<link rel="stylesheet" href="/dist/main.css" />'
+        : ''}
+    </head>
+    <body>
+      <div id="app"></div>
+      <script src="/dist/dll.js"></script>
+      <script src="/dist/main.js"></script>
+    </body>
+  </html>`
+)
+
+const html = getHTML()
+
 app.use(express.static(path.join(__dirname, 'public')))
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'))
+  res.send(html)
 })
 
 app.listen(3000, (err) => {
