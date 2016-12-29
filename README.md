@@ -14,7 +14,7 @@ Single Page Application React Typescript
 - mobx (page with simple example)
 - jest (TODO snapshots)
 - postcss, cssnext
-- production config (TODO sourcemap for main entry point in production)
+- production config
 - TODO
     - graphql?
 
