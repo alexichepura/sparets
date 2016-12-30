@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Match from 'react-router/Match'
 
 import Home from '../page/Home'
@@ -9,7 +9,7 @@ import MobxPeople from '../mobx/People'
 
 const s: any = require('./Main.css')
 
-export default class Main extends React.Component<any, any> {
+export default class Main extends Component<any, any> {
   render() {
     return <main className={s.main}>
       <Match exactly pattern='/' component={Home} />

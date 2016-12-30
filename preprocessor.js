@@ -1,22 +1,32 @@
-/**
- * Initially from https://github.com/facebook/jest/tree/master/examples/typescript
- * But jest doesn't run with es6 modules (for now?), then force commonjs.
- */
-
 const tsc = require('typescript')
 const tsConfig = require('./tsconfig.json')
 
+const babel = require('babel-core')
+const jestPreset = require('babel-preset-jest')
+const transformES6Modules = require('babel-plugin-transform-es2015-modules-commonjs')
+
 module.exports = {
-  process(src, path) {
-    if (path.endsWith('.ts') || path.endsWith('.tsx')) {
-      const options = Object.assign(
-        tsConfig.compilerOptions,
-        {
-          module: "commonjs"
-        }
-      )
-      return tsc.transpile(src, options, path, [])
-    }
-    return src
-  }
+	process(src, path) {
+		const isTypeScript = path.endsWith('.ts') || path.endsWith('.tsx')
+		const isJavaScript = path.endsWith('.js') || path.endsWith('.jsx')
+
+		if (isTypeScript) {
+			src = tsc.transpile(
+				src,
+				tsConfig.compilerOptions,
+				path,
+				[]
+			)
+		}
+
+		if (isJavaScript || isTypeScript) {
+      src = babel.transform(src, {
+        presets: [jestPreset],
+        plugins: [transformES6Modules],
+        retainLines: true
+      }).code
+		}
+
+		return src
+	}
 }

@@ -1,0 +1,10 @@
+exports[`Snapshot People component renders simple list of people 1`] = `
+<ul>
+  <li>
+    john@doe.com
+  </li>
+  <li>
+    jack@daniels.com
+  </li>
+</ul>
+`;

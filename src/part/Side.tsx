@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Link from 'react-router/Link'
 const s: any = require('./Side.css')
 
@@ -11,7 +11,7 @@ const SideLink = p => <li>
   </Link>
 </li>
 
-export default class Side extends React.Component<any, any> {
+export default class Side extends Component<any, any> {
   render() {
     return <aside className={s.side}>
       <ul>
