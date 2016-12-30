@@ -12,7 +12,7 @@ Single Page Application React Typescript
 - CSS modules
 - redux (page with simple example)
 - mobx (page with simple example)
-- jest (TODO snapshots)
+- jest
 - postcss, cssnext
 - production config
 - TODO
