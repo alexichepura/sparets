@@ -13,6 +13,8 @@
     "lint": "tslint src/**.tsx src/**.ts",
     "lint:fix": "tslint --fix src/**.tsx src/**.ts",
     "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "test:nocache": "jest --no-cache"
   },
   "dependencies": {

@@ -4,5 +4,6 @@
 *.log
 npm-debug.log*
 node_modules
+coverage
 public/dist/*
 .env
